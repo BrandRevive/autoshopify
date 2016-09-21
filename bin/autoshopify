@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+var args = require('minimist')(process.argv.slice(2))
+var fs = require('fs')
+var camelCase = require('lodash.camelcase')
+var autoshopify = require('../')
+
+function doCommand(config) {
+  var command = args['_'][0]
+  autoshopify.setConfig(config)
+  // FIXME: Make this dynamic
+  autoshopify[camelCase(command)](args['_'][1], args['_'][2])
+}
+
+if (args['keyfile'] && args['_'][0]) {
+  var config = require(args['keyfile'])
+  doCommand(config)
+} else if (args['shop'] && args['api-key'] && args['access-token'] && args['_'][0]) {
+  var config = {
+    shop: args['shop'],
+    shopify_api_key: args['api-key'],
+    access_token: args['access-token']
+  }
+  doCommand(config)
+} else {
+  console.log('Usage:\n'+
+              'autoshopify --api-key=MY_API_KEY --access-token=MY_ACCESS_TOKEN --shop=MY_SHOP COMMAND [OPTIONS]\n'+
+              'autoshopify --configfile=/path/to/config.json COMMAND [OPTIONS]')
+}
