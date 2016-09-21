@@ -3,7 +3,10 @@ Auto Shopify
 
 A collection of scripts to automate Shopify tasks. Please submit a PR if you've created something useful with this.
 
-Until this is on NPM you can clone the repo and use `bin/autoshopify` to run the commands.
+Install with:
+```
+npm install -g autoshopify
+```
 
 Usage
 -----
