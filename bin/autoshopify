@@ -8,8 +8,7 @@ var autoshopify = require('../')
 function doCommand(config) {
   var command = args['_'][0]
   autoshopify.setConfig(config)
-  // FIXME: Make this dynamic
-  autoshopify[camelCase(command)](args['_'][1], args['_'][2])
+  autoshopify[camelCase(command)].apply(args['_'].slice(1))
 }
 
 if (args['keyfile'] && args['_'][0]) {
