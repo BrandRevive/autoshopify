@@ -17,5 +17,16 @@
     "minimist": "^1.2.0",
     "shopify-node-api": "^1.7.2"
   },
-  "bin": "./bin/autoshopify"
+  "bin": {
+    "autoshopify": "./bin/autoshopify"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandRevive/autoshopify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BrandRevive/autoshopify/issues"
+  },
+  "homepage": "https://github.com/BrandRevive/autoshopify#readme"
 }
